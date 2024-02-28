@@ -1,7 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://hhosxmhdwlj8"]
+[gd_scene load_steps=8 format=3 uid="uid://hhosxmhdwlj8"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_toqkx"]
 [ext_resource type="Texture2D" uid="uid://dpfw6ck4mow1p" path="res://Sprites/Characters/character_0024.png" id="2_u1ucw"]
+[ext_resource type="Texture2D" uid="uid://cmuj56kflday4" path="res://Sprites/Characters/character_0025.png" id="3_jwhg6"]
+[ext_resource type="AudioStream" uid="uid://d1ql0utqwnayy" path="res://SFX/hurt3.ogg" id="3_u0xnw"]
+[ext_resource type="Texture2D" uid="uid://b7v77tpl04fsy" path="res://Sprites/Characters/character_0026.png" id="4_877wu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5y5d4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u1ucw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jwhg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_877wu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jwhg6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2gt7a"]
 radius = 8.06226
@@ -11,10 +34,13 @@ position = Vector2(171, -68)
 script = ExtResource("1_toqkx")
 move_direction = Vector2(2.08165e-12, -50)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_u1ucw")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5y5d4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2gt7a")
+
+[node name="EnemyHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u0xnw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

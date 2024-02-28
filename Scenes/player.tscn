@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://0ja81kf05uix"]
+[gd_scene load_steps=9 format=3 uid="uid://0ja81kf05uix"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_vdedp"]
 [ext_resource type="Texture2D" uid="uid://cjfbasl7eygp0" path="res://Sprites/Characters/character_0002.png" id="2_6isby"]
+[ext_resource type="AudioStream" uid="uid://dktv6r7wn41y0" path="res://SFX/jump3.ogg" id="3_ivxt5"]
+[ext_resource type="AudioStream" uid="uid://ljb5lqj2ukd4" path="res://SFX/fall1.ogg" id="4_vs152"]
+[ext_resource type="AudioStream" uid="uid://do3v0c8omj4qh" path="res://SFX/lose6.ogg" id="5_6ayfp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0gb7"]
 radius = 9.0
@@ -44,3 +47,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_2hekf")
 text = "score: 0"
 label_settings = SubResource("LabelSettings_toluj")
 uppercase = true
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ivxt5")
+
+[node name="Fall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vs152")
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6ayfp")

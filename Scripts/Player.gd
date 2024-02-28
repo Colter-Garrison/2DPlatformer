@@ -18,6 +18,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x += move_speed
 	
 	if Input.is_action_pressed("jump") and is_on_floor():
+		$Jump.play()
 		velocity.y = -jump_force
 	
 	move_and_slide()
