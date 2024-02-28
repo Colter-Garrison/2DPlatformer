@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://0ja81kf05uix"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_vdedp"]
+[ext_resource type="Texture2D" uid="uid://cjfbasl7eygp0" path="res://Sprites/Characters/character_0002.png" id="2_6isby"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0gb7"]
+radius = 9.0
+height = 22.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hekf"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_toluj"]
+font_size = 48
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(0, -10)
+script = ExtResource("1_vdedp")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("2_6isby")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_t0gb7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreText" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_2hekf")
+text = "score: 0"
+label_settings = SubResource("LabelSettings_toluj")
+uppercase = true
