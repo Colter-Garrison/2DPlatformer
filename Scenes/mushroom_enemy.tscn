@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=3 uid="uid://crf2i61787jnu"]
+
+[ext_resource type="Texture2D" uid="uid://wstccckv24ot" path="res://Sprites/Characters/cute mushroom walk.png" id="1_7ei7c"]
+[ext_resource type="Script" path="res://Scripts/mushroom_enemy.gd" id="1_geyiy"]
+
+[sub_resource type="Animation" id="Animation_pwiu5"]
+resource_name = "walking"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_7ei7c")]
+}
+
+[sub_resource type="Animation" id="Animation_gcwqo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_7ei7c")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ptcq"]
+_data = {
+"RESET": SubResource("Animation_gcwqo"),
+"walking": SubResource("Animation_pwiu5")
+}
+
+[node name="MushroomEnemy" type="Area2D"]
+scale = Vector2(0.488879, 0.488879)
+script = ExtResource("1_geyiy")
+move_direction = Vector2(-50, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7ei7c")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2ptcq")
+}
+autoplay = "walking"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 17, -7, 16, -10, 9, -11, 1, -16, -3, -16, -12, -4, -17, 4, -17, 14, -12, 16, -3, 10, 3, 9, 12)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

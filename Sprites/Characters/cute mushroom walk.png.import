@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c236i16qpcijo"
-path="res://.godot/imported/backgroundColorForest.png-4e61357d57d063e51aa0c6aacca80208.ctex"
+uid="uid://wstccckv24ot"
+path="res://.godot/imported/cute mushroom walk.png-300bd2f1934a48c67f66b5d427477c1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/backgroundColorForest.png"
-dest_files=["res://.godot/imported/backgroundColorForest.png-4e61357d57d063e51aa0c6aacca80208.ctex"]
+source_file="res://Sprites/Characters/cute mushroom walk.png"
+dest_files=["res://.godot/imported/cute mushroom walk.png-300bd2f1934a48c67f66b5d427477c1b.ctex"]
 
 [params]
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dayl5ery1bhqb"]
+
+[ext_resource type="Script" path="res://Scripts/shop.gd" id="1_fwdpf"]
+[ext_resource type="Texture2D" uid="uid://dtj5r1t7y3w3f" path="res://Sprites/oak_woods_v1.0/decorations/shop.png" id="2_p7i1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl8t0"]
+size = Vector2(110, 87.5)
+
+[node name="Shop" type="Area2D"]
+scale = Vector2(0.601889, 0.601889)
+script = ExtResource("1_fwdpf")
+next_scene = "res://Scenes/level1.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_p7i1y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 6.25)
+shape = SubResource("RectangleShape2D_gl8t0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

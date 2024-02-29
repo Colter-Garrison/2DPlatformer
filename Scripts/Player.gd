@@ -18,17 +18,17 @@ func _physics_process(delta: float) -> void:
 		direction += 1
 	
 	if direction != 0 and is_on_floor():
-		$Sprite.animation = "walk"
+		$AnimationPlayer.play("walking")
 		$Sprite.flip_h = direction < 0
 	else:
 		if is_on_floor():
-			$Sprite.animation = "idle"
+			$AnimationPlayer.play("idle")
 	
 	velocity.x = move_speed * direction
 	
 	if Input.is_action_pressed("jump") and is_on_floor():
 		$Jump.play()
-		$Sprite.animation = "jump"
+		$AnimationPlayer.play("jumping")
 		velocity.y = -jump_force
 	
 	move_and_slide()
